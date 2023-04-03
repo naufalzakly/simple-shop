@@ -23,10 +23,11 @@
 <body>
     <div id="app">
         @include('includes.header')
-
-        <main class="pt-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <main class="pt-4">
+                @yield('content')
+            </main>
+        </div>
     </div>
 
     @yield('js')
