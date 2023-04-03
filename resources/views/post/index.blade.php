@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Posts</title>
-</head>
+@section('title', 'Post Index Page')
 
-<body>
+@section('scripts')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+@endsection
+
+@section('content')
+    @auth
     <a href="{{ route('post.create') }}">
         <button>Tambah</button>
     </a>
-    <table>
-        <th>
+    @endauth
+
+    <table id="exampleTable">
+        <thead>
             <tr>
-                <td>No</td>
-                <td>Title</td>
-                <td>Description</td>
+                <th>No</th>
+                <th>Title</th>
+                <th>Description</th>
             </tr>
-        </th>
+        </thead>
         <tbody>
             @foreach ($posts as $item)
                 <tr>
@@ -30,6 +33,12 @@
             @endforeach
         </tbody>
     </table>
-</body>
+@endsection
 
-</html>
+@section('js')
+    <script>
+        $(document).ready(function() {
+            $('#exampleTable').DataTable();
+        });
+    </script>
+@endsection

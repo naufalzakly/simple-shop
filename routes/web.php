@@ -15,13 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/home', function() {
+Route::get('/', function () {
     return view('home.index');
 })->name('home.index');
+
+// Route::get('/home', function() {
+//     return view('home.index');
+// })->name('home.index');
 
 Route::get('/product', function() {
     return view('product.index');
@@ -30,6 +34,7 @@ Route::get('/product', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/post',[PostController::class,'index'])->name('post.index');
 Route::get('/post/create',[PostController::class,'create'])->name('post.create');
 Route::post('/post/store',[PostController::class,'store'])->name('post.store');
