@@ -10,11 +10,11 @@
 
 @section('content')
     @auth
-    <div class="d-flex mb-4">
-        <a href="{{ route('product.create') }}" type="button" class="ms-auto btn btn-primary">
-            Tambah
-        </a>
-    </div>
+        <div class="d-flex mb-4">
+            <a href="{{ route('product.create') }}" type="button" class="ms-auto btn btn-primary">
+                Tambah
+            </a>
+        </div>
     @endauth
 
     <table id="exampleTable">
@@ -24,6 +24,7 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Stocks</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,13 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->stocks }}</td>
+                    <td class="d-flex">
+                        <a href="{{ route('product.edit', $item->id) }}" type="button" class="btn btn-primary me-3">Edit</a>
+                        <form action="{{ route('product.destroy', $item->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger me-3">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
