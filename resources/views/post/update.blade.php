@@ -7,16 +7,17 @@
 @endsection
 
 @section('content')
-    <h5 class="mb-4">Tambah Post</h5>
-    <form action="{{ route('post.store') }}" method="post">
+    <h5 class="mb-4">Edit Product</h5>
+    <form action="{{ route('post.update',$post->id) }}" method="post">
+        @method("PUT")
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Judul</label>
-            <input type="text" name="title" class="form-control" id="title">
+            <input type="text" name="title" class="form-control" id="title" value="{{ $post->title }}">
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Deskripsi</label>
-            <textarea class="form-control" name="description" id="description" ></textarea>
+            <textarea name="description" id="description" >{{ $post->description }}</textarea>
         </div>
         
         <div class="d-flex">

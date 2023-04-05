@@ -10,9 +10,11 @@
 
 @section('content')
     @auth
-    <a href="{{ route('post.create') }}">
-        <button>Tambah</button>
-    </a>
+        <div class="d-flex mb-4">
+            <a href="{{ route('post.create') }}" type="button" class="ms-auto btn btn-primary">
+                Tambah
+            </a>
+        </div>
     @endauth
 
     <table id="exampleTable">
@@ -21,6 +23,9 @@
                 <th>No</th>
                 <th>Title</th>
                 <th>Description</th>
+                @auth
+                    <th>Action</th>
+                @endauth
             </tr>
         </thead>
         <tbody>
@@ -29,6 +34,15 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->title }}</td>
                     <td>{{ $item->description }}</td>
+                    @auth
+                        <td class="d-flex">
+                            <a href="{{ route('post.edit', $item->id) }}" type="button" class="btn btn-primary me-3">Edit</a>
+                            <form action="{{ route('post.destroy', $item->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-danger me-3">Delete</button>
+                            </form>
+                        </td>
+                    @endauth
                 </tr>
             @endforeach
         </tbody>
