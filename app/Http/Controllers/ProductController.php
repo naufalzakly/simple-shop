@@ -36,7 +36,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+
+        $file = $request->file('photo');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $photo_path = $request->file('photo')->storeAs('public/products',$filename);
+
+        //menghapus string 'public/' karena dapat menyulitkan pemanggilan di blade.
+        $photo_path = str_replace('public/','',$photo_path); 
+
+        $data = [
+            'name' => $request->name,
+            'price' => $request->price,
+            'stocks' => $request->stocks,
+            'photo' => $photo_path
+        ];
+
         $product = Product::create($data);
 
         return redirect()->route('product.index');
