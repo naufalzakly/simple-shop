@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,4 +46,3 @@ Route::post('/post/store',[PostController::class,'store'])->name('post.store');
 Route::get('/post/edit/{id}', [PostController::class,'edit'])->name('post.edit');
 Route::put('/post/update/{id}', [PostController::class,'update'])->name('post.update');
 Route::post('/post/destroy/{id}', [PostController::class,'destroy'])->name('post.destroy');
-
