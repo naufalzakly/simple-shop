@@ -9,15 +9,12 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('post.index') }}">Post</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('product.index') }}">Product</a>
-                </li>
-            </ul>
+            @auth    
+                @if (Auth::user()->userRole->role->name == 'superadmin')
+                    @include('includes.navbar-admin')
+                @endif
+            @endauth
+            @include('includes.navbar-customer')
 
             <ul class="navbar-nav col-6">
                 <form class="col-12 mb-2 mb-lg-0 me-lg-auto" role="search">

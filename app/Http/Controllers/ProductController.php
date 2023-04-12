@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         $product = Product::create($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -103,7 +103,7 @@ class ProductController extends Controller
         $product->photo = $photo_path;
         $product->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -117,6 +117,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 }
