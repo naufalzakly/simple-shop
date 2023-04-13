@@ -10,7 +10,7 @@
 
 @section('content')
     <h5 class="mb-4">Edit Product</h5>
-    <form action="{{ route('product.update',$product->id) }}" method="post">
+    <form action="{{ route('product.update',$product->id) }}" method="post" enctype="multipart/form-data">
         @method("PUT")
         @csrf
         <div class="mb-3">
@@ -24,6 +24,10 @@
         <div class="mb-3">
             <label for="stocks" class="form-label">Stock</label>
             <input type="number" name="stocks" class="form-control" id="stocks" value="{{ $product->stocks }}">
+        </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label">Photo</label>
+            <input type="file" name="photo" class="form-control" id="photo">
         </div>
 
         <div class="d-flex">
