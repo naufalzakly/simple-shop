@@ -21,6 +21,12 @@
                     <a class="nav-link" href="{{ route('category.index') }}">Category</a>
                 </li>
             </ul>
+            @auth
+                @if (Auth::user()->userRole->role->name == 'superadmin')
+                    @include('includes.navbar-admin')
+                @endif
+            @endauth
+            @include('includes.navbar-customer')
 
             <ul class="navbar-nav col-6">
                 <form class="col-12 mb-2 mb-lg-0 me-lg-auto" role="search">

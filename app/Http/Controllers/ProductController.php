@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         $product = Product::create($data);
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -93,6 +93,7 @@ class ProductController extends Controller
         $photo_path = $request->file('photo')->storeAs('public/products',$filename);
 
         //menghapus string 'public/' karena dapat menyulitkan pemanggilan di blade.
+        // $photo_path = str_replace('public/','',$photo_path);
         $photo_path = str_replace('public/','',$photo_path);
 
         $product = Product::find($id);
@@ -103,7 +104,7 @@ class ProductController extends Controller
         $product->photo = $photo_path;
         $product->save();
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 
     /**
@@ -117,6 +118,6 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('admin.product.index');
     }
 }

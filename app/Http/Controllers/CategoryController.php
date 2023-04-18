@@ -21,3 +21,8 @@ class CategoryController extends Controller
         return view('category.detail',compact('category'));
     }
 }
+//     public function index()
+//     {
+//         # code...
+//     }
+// }
