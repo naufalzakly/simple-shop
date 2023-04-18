@@ -1,13 +1,10 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
-=======
 use App\Http\Controllers\Public\ProductController;
 use App\Http\Middleware\EnsureAuthCustomer;
->>>>>>> role_management
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
