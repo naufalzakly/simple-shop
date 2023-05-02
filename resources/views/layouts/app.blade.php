@@ -31,6 +31,7 @@
     </div>
 
     @yield('js')
+    @include('sweetalert::alert')
 
     @stack('script')
 </body>

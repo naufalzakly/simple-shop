@@ -15,18 +15,30 @@
         <div class="mb-3">
             <label for="name" class="form-label">Nama</label>
             <input type="text" name="name" class="form-control" id="name">
+            @error('name')
+                <span class="me-2 text-danger fw-bold">{{ $message }}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Harga</label>
             <input type="number" name="price" class="form-control" id="price">
+            @error('price')
+                <span class="me-2 text-danger fw-bold">{{ $message }}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="stocks" class="form-label">Stock</label>
             <input type="number" name="stocks" class="form-control" id="stocks">
+            @error('stocks')
+                <span class="me-2 text-danger fw-bold">{{ $message }}</span>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="photo" class="form-label">Photo</label>
             <input type="file" name="photo" class="form-control" id="photo">
+            @error('photo')
+                <span class="me-2 text-danger fw-bold">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="d-flex">

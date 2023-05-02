@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductValidationRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -34,9 +36,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductValidationRequest $request)
     {
-
         $file = $request->file('photo');
         $filename = time() . '.' . $file->getClientOriginalExtension();
         $photo_path = $request->file('photo')->storeAs('public/products',$filename);
@@ -51,9 +52,15 @@ class ProductController extends Controller
             'photo' => $photo_path
         ];
 
-        $product = Product::create($data);
+        try {
+            $product = Product::create($data);
+            Alert::success('Berhasil', 'Produk berhasil ditambahkan');
+            return redirect()->route('admin.product.index');
+        } catch (\Throwable $th) {
+            // throw $th;
+            Alert::error('Error', 'Produk gagal ditambahkan');
+        }
 
-        return redirect()->route('admin.product.index');
     }
 
     /**
