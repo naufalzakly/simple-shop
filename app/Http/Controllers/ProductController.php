@@ -59,6 +59,7 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             // throw $th;
             Alert::error('Error', 'Produk gagal ditambahkan');
+            return redirect()->back();
         }
 
     }
