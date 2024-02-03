@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Product Index Page')
+@section('title', 'Category Index Page')
 
 @section('scripts')
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
@@ -9,32 +9,38 @@
 @endsection
 
 @section('content')
-    @auth
-        <div class="d-flex mb-4">
-            <a href="{{ route('admin.product.create') }}" type="button" class="ms-auto btn btn-primary">
-                Tambah
-            </a>
-        </div>
-    @endauth
-
-    <table id="exampleTable">
+    <a type="button" class="btn btn-primary" href="{{ route('category.index') }}">kembali</a>    
+    <div class="input-form">
+        <label for="">Nama Kategory</label>
+        <input type="text" value="{{ $categories->name }}" class="form-control" disabled>    
+    </div>
+        <table id="exampleTable">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Stocks</th>
+                <th>Unit</th>
+                <th>Brand</th>
                 <th>Photo</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $item)
+            @foreach ($categories->fkPoduct as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->price }}</td>
                     <td>{{ $item->stocks }}</td>
+                    @if( $item->fkProductDetail != null)
+                        <td>{{ $item->fkProductDetail->unit }}</td>
+                        <td>{{$item->fkProductDetail->brand}}</td>
+                    @else
+                        <td>-</td>
+                        <td>-</td>
+                    @endif
                     <td>
                         @if ($item->photo != null)
                             <div style="width:200px">
@@ -44,17 +50,12 @@
                             <p class="text-info">tidak ada foto</p>
                         @endif
                     </td>
-                    <td class="d-flex">
-                        <a href="{{ route('admin.product.edit', $item->id) }}" type="button" class="btn btn-primary me-3">Edit</a>
-                        <form action="{{ route('admin.product.destroy', $item->id) }}" method="post">
-                            @csrf
-                            <button type="submit" class="btn btn-danger me-3">Delete</button>
-                        </form>
-                    </td>
+               
                 </tr>
             @endforeach
         </tbody>
     </table>
+  
 @endsection
 
 @section('js')
@@ -64,4 +65,3 @@
         });
     </script>
 @endsection
- 

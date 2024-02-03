@@ -1,25 +1,39 @@
-<header class="top-navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'NetKitchen') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
-					aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-			</button>
-            @auth
-                @if(Auth::user()->userRole->role->name == 'superadmin')
-                    @include('includes.navbar-admin')
-                @else
-                    @include('includes.navbar-customer')
-                @endif
-            @endauth
-            <div class="collapse navbar-collapse" id="navbars-rs-food">
 
-            </div>
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- Right Side Of Navbar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+
+
+
+            <ul class="navbar-nav col-6">
+                <form class="col-12 mb-2 mb-lg-0 me-lg-auto" role="search">
+                    <div class="input-group rounded-pill">
+
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            All Categories
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+
+                        <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                            id="searchNavbar">
+                    </div>
+                </form>
+            </ul>
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
                 @guest
@@ -58,5 +72,5 @@
                 @endguest
             </ul>
         </div>
-    </nav>
-</header>
+    </div>
+</nav>

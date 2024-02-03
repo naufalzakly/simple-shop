@@ -12,6 +12,17 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/views/bootstrap.min.css">
+	<!-- Site CSS -->
+	<link rel="stylesheet" href="css/views/style.css">
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="css/views/responsive.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="css/views/custom.css">
     @stack('styles')
 
     <!-- Scripts -->

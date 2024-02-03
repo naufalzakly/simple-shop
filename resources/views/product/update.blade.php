@@ -10,7 +10,7 @@
 
 @section('content')
     <h5 class="mb-4">Edit Product</h5>
-    <form action="{{ route('product.update',$product->id) }}" method="post">
+    <form action="{{ route('admin.product.update',$product->id) }}" method="post" enctype="multipart/form-data">
         @method("PUT")
         @csrf
         <div class="mb-3">
@@ -25,10 +25,22 @@
             <label for="stocks" class="form-label">Stock</label>
             <input type="number" name="stocks" class="form-control" id="stocks" value="{{ $product->stocks }}">
         </div>
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload Foto</label>
+            <input type="file" name="photo" class="form-control"id="photo">
+        </div>
+        @if ($product->photo != null)
+            <div style="width:200px">
+                <img src="{{ asset('storage/' . $product->photo)}}" class="img-fluid" alt="...">
+            </div>
+        @else
+             <p class="text-info">tidak ada foto</p>
+        @endif
+
 
         <div class="d-flex">
             <button type="submit" class="btn btn-primary me-3">Simpan</button>
-            <a href="{{ route('product.index') }}" type="button" class="btn btn-danger">Batal</a>
+            <a href="{{ route('admin.product.index') }}" type="button" class="btn btn-danger">Batal</a>
         </div>
     </form>
 @endsection

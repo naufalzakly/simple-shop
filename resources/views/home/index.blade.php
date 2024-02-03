@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Home Page | Shop Beta')
+@section('title', 'Home Page | Keistemawaan Kecil')
 
 @section('content')
 
     <div class="container">
-        @include('components.main_carousel')
+       
 
         <div class="row">
             <!-- ini bawaan bs5 untuk mengatur tata letak -->
